@@ -13,7 +13,11 @@ export const TaskController = () => {
   // Create Task Handler
   const createTask = (e: FormEvent, title: string) => {
     e.preventDefault();
-    createTaskMutation.mutate({ title });
+    if (title && title.trim() !== "") {
+      createTaskMutation.mutate({ title });
+    } else {
+      alert("Please enter a task title.");
+    }
   };
   //---------------------------
 
